@@ -131,13 +131,16 @@ def generate_statistics():
     st.sidebar.write(f'Tâches en retard: {overdue_tasks}')
     
     # Pie chart
-    labels = 'Complétées', 'En retard', 'En cours'
-    sizes = [completed_tasks, overdue_tasks, total_tasks - completed_tasks - overdue_tasks]
-    colors = ['green', 'red', 'orange']
-    fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=90)
-    ax1.axis('equal')
-    st.sidebar.pyplot(fig1)
+    if total_tasks > 0:
+        labels = 'Complétées', 'En retard', 'En cours'
+        sizes = [completed_tasks, overdue_tasks, total_tasks - completed_tasks - overdue_tasks]
+        colors = ['green', 'red', 'orange']
+        fig1, ax1 = plt.subplots()
+        ax1.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=90)
+        ax1.axis('equal')
+        st.sidebar.pyplot(fig1)
+    else:
+        st.sidebar.write("Pas de données à tracer pour le moment !!!")
 
 # Générer des statistiques
 generate_statistics()
