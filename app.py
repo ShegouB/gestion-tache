@@ -205,7 +205,8 @@ st.markdown("""
 
 # Interface utilisateur avec Streamlit
 logo = Image.open("banner.png").resize((515, 512))
-st.image(logo, use_column_width=True)
+img = Image.open("TaskOpti.png").resize((1366, 768))
+st.image(img, use_column_width=True)
 
 st.title('Gestionnaire de Tâches')
 # Ajout d'un séparateur 
